@@ -36,7 +36,9 @@
 
             <div class="form-group">
                 <label data-i18n="document">Attach Document</label>
-                <input type="file" id="document" class="file-input" required>
+                <input type="file" id="document" accept=".pdf,.doc,.docx">
+                <!-- Progress bar for file upload -->
+                <input type="range" id="uploader" min="0" max="100" value="0" disabled>
             </div>
 
             <button type="submit" data-i18n="send">Send</button>
