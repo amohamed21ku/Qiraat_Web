@@ -1,52 +1,1234 @@
 <!DOCTYPE html>
-<html lang="AR">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Application Form/استمارة تقديم</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Qirat African Journal - Submit Your Article</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #ca791e;
+            --primary-dark: #a86419;
+            --primary-light: #e8b366;
+            --secondary-color: #2c3e50;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --background: #ffffff;
+            --background-light: #f8f9fa;
+            --border-color: #e1e8ed;
+            --success-color: #27ae60;
+            --error-color: #e74c3c;
+            --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 5px 25px rgba(202, 121, 30, 0.2);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--background);
+            direction: rtl;
+            overflow-x: hidden;
+        }
+
+        body[dir="ltr"] {
+            direction: ltr;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body[dir="rtl"] {
+            font-family: 'Cairo', 'Inter', sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: 20px 0;
+            box-shadow: var(--shadow);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            height: 60px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+
+        .journal-info h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .journal-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .lang-toggle {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+
+        .lang-toggle:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--background-light), #fff);
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23ca791e" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 80px 0;
+            background: var(--background);
+        }
+
+        .form-wrapper {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+            margin: 0 auto;
+            max-width: 900px;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--background-light);
+        }
+
+        .form-header h3 {
+            font-size: 2rem;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .form-header p {
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        /* Form Styles */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .form-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .section-title i {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        /* Fixed input padding to prevent icon overlap */
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px 50px 15px 20px; /* More padding on right for RTL */
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+            background: white;
+            position: relative;
+        }
+
+        /* LTR padding adjustment */
+        body[dir="ltr"] .form-group input,
+        body[dir="ltr"] .form-group select,
+        body[dir="ltr"] .form-group textarea {
+            padding: 15px 20px 15px 50px; /* More padding on left for LTR */
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(202, 121, 30, 0.1);
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+            pointer-events: none;
+            margin-top: 12px;
+            z-index: 1;
+        }
+
+        body[dir="ltr"] .input-icon {
+            right: auto;
+            left: 15px;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+            font-family: inherit;
+        }
+
+        /* Document Upload Section - Separate Row */
+        .document-upload-section {
+            grid-column: span 2;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 2px solid var(--background-light);
+        }
+
+        .document-upload-section .section-title {
+            margin-bottom: 25px;
+        }
+
+        /* File Upload Styles */
+        .file-upload-area {
+            border: 3px dashed var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            background: var(--background-light);
+        }
+
+        .file-upload-area:hover,
+        .file-upload-area.dragover {
+            border-color: var(--primary-color);
+            background: rgba(202, 121, 30, 0.05);
+        }
+
+        .file-upload-content i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .file-upload-content p {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .file-types {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .file-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--background-light);
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin-top: 10px;
+        }
+
+        .file-details {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .file-details i {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .file-name {
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .file-size {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .file-type-badge {
+            background: var(--primary-color);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .remove-file {
+            background: var(--error-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .remove-file:hover {
+            transform: scale(1.1);
+        }
+
+        .upload-progress {
+            margin-top: 15px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--primary-color);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            text-align: center;
+            display: block;
+        }
+
+        /* Form Actions */
+        .form-actions {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 2px solid var(--background-light);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .submit-btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* Confirmation Message */
+        .confirmation {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: none;
+        }
+
+        .confirmation.success {
+            background: rgba(39, 174, 96, 0.1);
+            color: var(--success-color);
+            border: 2px solid var(--success-color);
+        }
+
+        .confirmation.error {
+            background: rgba(231, 76, 60, 0.1);
+            color: var(--error-color);
+            border: 2px solid var(--error-color);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .footer p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            
+            .logo-section {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .form-wrapper {
+                padding: 30px 20px;
+                margin: 0 10px;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .form-group.full-width,
+            .document-upload-section {
+                grid-column: span 1;
+            }
+            
+            .main-content {
+                padding: 60px 0;
+            }
+            
+            .submit-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .form-wrapper {
+                padding: 20px 15px;
+            }
+            
+            .form-header h3 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Animation for form validation */
+        .form-group input.error,
+        .form-group select.error,
+        .form-group textarea.error {
+            border-color: var(--error-color);
+            animation: shake 0.5s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        /* Loading animation */
+        .submit-btn.loading {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        .submit-btn.loading::after {
+            content: '';
+            width: 16px;
+            height: 16px;
+            border: 2px solid transparent;
+            border-top: 2px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <div class="lang-toggle" id="langToggle">EN/AR</div>
-        <img src="logo2.png" alt="Logo" class="logo">
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-section">
+                <img src="logo2.png" alt="Qirat African Logo" class="logo">
+                <div class="journal-info">
+                    <h1 class="journal-title" data-i18n="journal_title">Qirat African Journal</h1>
+                    <p class="journal-subtitle" data-i18n="journal_subtitle">Academic Research & Publications</p>
+                </div>
+            </div>
+            <button class="lang-toggle" id="langToggle">
+                <i class="fas fa-globe"></i>
+                <span>EN / AR</span>
+            </button>
+        </div>
     </header>
 
-    <div class="container">
-        <form id="applicationForm">
-            <div class="form-group">
-                <label data-i18n="full_name">Full Name</label>
-                <input type="text" id="fullName" required>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2 class="hero-title" data-i18n="hero_title">Submit Your Research Article</h2>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="form-wrapper">
+                <div class="form-header">
+                    <h3 data-i18n="submission_form">Article Submission Form</h3>
+                    <p data-i18n="form_description">Please fill out all required fields to submit your article for review.</p>
+                </div>
+
+                <form id="applicationForm" class="application-form">
+                    <div class="form-grid">
+                        <!-- Personal Information Section -->
+                        <div class="form-section">
+                            <h4 class="section-title">
+                                <i class="fas fa-user"></i>
+                                <span data-i18n="personal_info">Personal Information</span>
+                            </h4>
+                            
+                            <div class="form-group">
+                                <label for="fullName" data-i18n="full_name">Full Name</label>
+                                <input type="text" id="fullName" required>
+                                <div class="input-icon">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" data-i18n="email">Email Address</label>
+                                <input type="email" id="email" required>
+                                <div class="input-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="education" data-i18n="education">Education Degree</label>
+                                <select id="education" required>
+                                    <!-- Options will be populated by JavaScript -->
+                                </select>
+                                <div class="input-icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Article Information Section -->
+                        <div class="form-section">
+                            <h4 class="section-title">
+                                <i class="fas fa-file-alt"></i>
+                                <span data-i18n="article_info">Article Information</span>
+                            </h4>
+                            
+                            <div class="form-group full-width">
+                                <label for="about" data-i18n="about">Research Summary & About You</label>
+                                <textarea id="about" rows="6" required></textarea>
+                                <div class="input-icon">
+                                    <i class="fas fa-edit"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Document Upload Section - Separate Row -->
+                        <div class="document-upload-section">
+                            <h4 class="section-title">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <span data-i18n="document_upload">Document Upload</span>
+                            </h4>
+                            
+                            <div class="form-group">
+                                <label for="document" data-i18n="document">Upload Article Document</label>
+                                <div class="file-upload-area" id="fileUploadArea">
+                                    <input type="file" id="document" accept=".pdf,.doc,.docx,.txt,.rtf,.odt" hidden>
+                                    <div class="file-upload-content">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        <p data-i18n="drag_drop">Drag and drop your file here or click to browse</p>
+                                        <span class="file-types" data-i18n="file_types">Supported formats: PDF, DOC, DOCX, TXT, RTF, ODT</span>
+                                    </div>
+                                </div>
+                                <div class="file-info" id="fileInfo" style="display: none;">
+                                    <div class="file-details">
+                                        <i class="fas fa-file"></i>
+                                        <span class="file-name"></span>
+                                        <span class="file-type-badge"></span>
+                                        <span class="file-size"></span>
+                                    </div>
+                                    <button type="button" class="remove-file" id="removeFile">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                                <div class="upload-progress" id="uploadProgress" style="display: none;">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill"></div>
+                                    </div>
+                                    <span class="progress-text">0%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            <span data-i18n="send">Submit Article</span>
+                        </button>
+                    </div>
+                </form>
+
+                <div class="confirmation" id="confirmationMessage"></div>
             </div>
+        </div>
+    </main>
 
-            <div class="form-group">
-                <label data-i18n="email">Email</label>
-                <input type="email" id="email" required>
-            </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p data-i18n="footer_text">&copy; 2025 Qirat African Journal. All rights reserved.</p>
+        </div>
+    </footer>
 
-            <div class="form-group">
-                <label data-i18n="education">Education Degree</label>
-                <select id="education" required></select>
-            </div>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+        import { 
+            getFirestore, 
+            collection, 
+            addDoc,
+            serverTimestamp 
+        } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
+        import { 
+            getStorage,
+            ref,
+            uploadBytes,
+            getDownloadURL
+        } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-storage.js";
 
-            <div class="form-group">
-                <label data-i18n="about">Tell us about you</label>
-                <textarea id="about" rows="4" required></textarea>
-            </div>
+        const firebaseConfig = {
+            apiKey: "AIzaSyAh5K2z-9RDM_cHCI5EpYYRNcItVPmAp2c",
+            authDomain: "qiraat-bf2e6.firebaseapp.com",
+            projectId: "qiraat-bf2e6",
+            storageBucket: "qiraat-bf2e6.firebasestorage.app",
+            messagingSenderId: "820441840325",
+            appId: "1:820441840325:web:0521b88607468d88ec4eac"
+        };
 
-            <div class="form-group">
-                <label data-i18n="document">Attach Document</label>
-                <input type="file" id="document" accept=".pdf,.doc,.docx">
-                <!-- Progress bar for file upload -->
-                <input type="range" id="uploader" min="0" max="100" value="0" disabled>
-            </div>
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const storage = getStorage(app);
 
-            <button type="submit" data-i18n="send">Send</button>
-        </form>
+        let currentLang = 'ar';
+        const translations = {
+            en: {
+                journal_title: "Qirat African Journal",
+                journal_subtitle: "Academic Research & Publications",
+                hero_title: "Submit Your Research Article",
+                submission_form: "Article Submission Form",
+                form_description: "Please fill out all required fields to submit your article for review.",
+                personal_info: "Personal Information",
+                article_info: "Article Information",
+                document_upload: "Document Upload",
+                full_name: "Full Name",
+                email: "Email Address",
+                education: "Education Degree",
+                about: "Research Summary & About You",
+                document: "Upload Article Document",
+                drag_drop: "Drag and drop your file here or click to browse",
+                file_types: "Supported formats: PDF, DOC, DOCX, TXT, RTF, ODT",
+                send: "Submit Article",
+                success: "Article submitted successfully! We will review it and get back to you soon.",
+                required: "This field is required",
+                footer_text: "© 2025 Qirat African Journal. All rights reserved.",
+                degrees: ["Select your degree", "Bachelor's Degree", "Master's Degree", "PhD/Doctorate", "Post-Doctorate"]
+            },
+            ar: {
+                journal_title: "مجلة قراءات أفريقية",
+                journal_subtitle: "البحوث الأكاديمية والمنشورات",
+                hero_title: "قدم مقالك البحثي",
+                submission_form: "نموذج تقديم المقال",
+                form_description: "يرجى ملء جميع الحقول المطلوبة لتقديم مقالك للمراجعة.",
+                personal_info: "المعلومات الشخصية",
+                article_info: "معلومات المقال",
+                document_upload: "رفع الوثيقة",
+                full_name: "الاسم الكامل",
+                email: "البريد الإلكتروني",
+                education: "الدرجة العلمية",
+                about: "ملخص البحث ونبذة عنك",
+                document: "رفع وثيقة المقال",
+                drag_drop: "اسحب وأفلت ملفك هنا أو انقر للتصفح",
+                file_types: "الصيغ المدعومة: PDF, DOC, DOCX, TXT, RTF, ODT",
+                send: "تقديم المقال",
+                success: "تم تقديم المقال بنجاح! سنقوم بمراجعته والرد عليك قريباً.",
+                required: "هذا الحقل مطلوب",
+                footer_text: "© 2025 مجلة قراءات أفريقية. جميع الحقوق محفوظة.",
+                degrees: ["اختر درجتك العلمية", "درجة البكالوريوس", "درجة الماجستير", "الدكتوراه", "ما بعد الدكتوراه"]
+            }
+        };
 
-        <div class="confirmation" id="confirmationMessage"></div>
-    </div>
+        // File upload handling
+        let selectedFile = null;
+        let selectedFileType = null;
 
-    <script type="module" src="app.js"></script>
+        // File type mapping with standardized file_type values
+        const fileTypeMap = {
+            'application/pdf': { extension: '.pdf', name: 'PDF', icon: 'fas fa-file-pdf', file_type: 'pdf' },
+            'application/msword': { extension: '.doc', name: 'DOC', icon: 'fas fa-file-word', file_type: 'doc' },
+            'application/vnd.openxmlformats-officedocument.wordprocessingml.document': { extension: '.docx', name: 'DOCX', icon: 'fas fa-file-word', file_type: 'docx' },
+            'text/plain': { extension: '.txt', name: 'TXT', icon: 'fas fa-file-text', file_type: 'txt' },
+            'application/rtf': { extension: '.rtf', name: 'RTF', icon: 'fas fa-file-alt', file_type: 'rtf' },
+            'application/vnd.oasis.opendocument.text': { extension: '.odt', name: 'ODT', icon: 'fas fa-file-alt', file_type: 'odt' }
+        };
+
+        // Get file type information
+        function getFileTypeInfo(file) {
+            console.log("Getting file type info for:", file.name, "MIME type:", file.type);
+            
+            const fileType = fileTypeMap[file.type];
+            if (fileType) {
+                console.log("Found exact MIME type match:", fileType);
+                return fileType;
+            }
+            
+            // Fallback: detect by file extension
+            const fileName = file.name.toLowerCase();
+            console.log("No MIME match, checking file extension for:", fileName);
+            
+            for (const [mimeType, info] of Object.entries(fileTypeMap)) {
+                if (fileName.endsWith(info.extension)) {
+                    console.log("Found extension match:", info);
+                    return info;
+                }
+            }
+            
+            console.log("No file type match found, returning unknown");
+            return { extension: '.unknown', name: 'Unknown', icon: 'fas fa-file', file_type: 'unknown' };
+        }
+
+        // Initialize the page
+        function initializePage() {
+            document.documentElement.lang = currentLang;
+            document.body.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+            
+            // Update all text elements
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    el.textContent = translations[currentLang][key];
+                }
+            });
+
+            // Update education dropdown
+            const educationSelect = document.getElementById('education');
+            educationSelect.innerHTML = '';
+            translations[currentLang].degrees.forEach((degree, index) => {
+                const option = document.createElement('option');
+                option.value = index === 0 ? '' : degree;
+                option.textContent = degree;
+                educationSelect.appendChild(option);
+            });
+
+            // Update placeholders
+            updatePlaceholders();
+        }
+
+        function updatePlaceholders() {
+            const placeholders = {
+                fullName: currentLang === 'ar' ? 'أدخل اسمك الكامل' : 'Enter your full name',
+                email: currentLang === 'ar' ? 'أدخل بريدك الإلكتروني' : 'Enter your email address',
+                about: currentLang === 'ar' ? 'اكتب ملخصاً عن بحثك ونبذة عنك...' : 'Write a summary of your research and about yourself...'
+            };
+
+            Object.keys(placeholders).forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.placeholder = placeholders[id];
+                }
+            });
+        }
+
+        // Language toggle handler
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            initializePage();
+        }
+
+        // File upload functionality
+        function setupFileUpload() {
+            const fileUploadArea = document.getElementById('fileUploadArea');
+            const fileInput = document.getElementById('document');
+            const fileInfo = document.getElementById('fileInfo');
+            const removeFileBtn = document.getElementById('removeFile');
+
+            // Click to upload
+            fileUploadArea.addEventListener('click', () => {
+                fileInput.click();
+            });
+
+            // Drag and drop functionality
+            fileUploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                fileUploadArea.classList.add('dragover');
+            });
+
+            fileUploadArea.addEventListener('dragleave', () => {
+                fileUploadArea.classList.remove('dragover');
+            });
+
+            fileUploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                fileUploadArea.classList.remove('dragover');
+                const files = e.dataTransfer.files;
+                if (files.length > 0) {
+                    handleFileSelection(files[0]);
+                }
+            });
+
+            // File input change
+            fileInput.addEventListener('change', (e) => {
+                if (e.target.files.length > 0) {
+                    handleFileSelection(e.target.files[0]);
+                }
+            });
+
+            // Remove file
+            removeFileBtn.addEventListener('click', () => {
+                selectedFile = null;
+                selectedFileType = null;
+                fileInput.value = '';
+                fileInfo.style.display = 'none';
+                fileUploadArea.style.display = 'block';
+            });
+        }
+
+        function handleFileSelection(file) {
+            const allowedTypes = [
+                'application/pdf', 
+                'application/msword', 
+                'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                'text/plain',
+                'application/rtf',
+                'application/vnd.oasis.opendocument.text'
+            ];
+            const maxSize = 10 * 1024 * 1024; // 10MB
+
+            console.log("File selection started:", file.name, "MIME type:", file.type);
+
+            // Get file type info
+            const fileTypeInfo = getFileTypeInfo(file);
+            console.log("File type info detected:", fileTypeInfo);
+            
+            if (!allowedTypes.includes(file.type) && !file.name.toLowerCase().endsWith(fileTypeInfo.extension)) {
+                showMessage(currentLang === 'ar' ? 'نوع الملف غير مدعوم' : 'File type not supported', 'error');
+                return;
+            }
+
+            if (file.size > maxSize) {
+                showMessage(currentLang === 'ar' ? 'حجم الملف كبير جداً (الحد الأقصى 10 ميجابايت)' : 'File size too large (max 10MB)', 'error');
+                return;
+            }
+
+            selectedFile = file;
+            selectedFileType = fileTypeInfo;
+            
+            // Show file info
+            document.querySelector('.file-name').textContent = file.name;
+            document.querySelector('.file-size').textContent = formatFileSize(file.size);
+            document.querySelector('.file-type-badge').textContent = fileTypeInfo.name;
+            
+            // Update file icon
+            const fileIcon = document.querySelector('.file-details i');
+            fileIcon.className = fileTypeInfo.icon;
+            
+            document.getElementById('fileUploadArea').style.display = 'none';
+            document.getElementById('fileInfo').style.display = 'flex';
+
+            console.log("File selected successfully:", file.name, "file_type:", fileTypeInfo.file_type);
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        // Form validation
+        function validateForm() {
+            const requiredFields = ['fullName', 'email', 'education', 'about'];
+            let isValid = true;
+
+            requiredFields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                const value = field.value.trim();
+                
+                // Remove previous error styling
+                field.classList.remove('error');
+                
+                if (!value) {
+                    field.classList.add('error');
+                    isValid = false;
+                }
+                
+                // Email validation
+                if (fieldId === 'email' && value) {
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(value)) {
+                        field.classList.add('error');
+                        isValid = false;
+                    }
+                }
+            });
+
+            // Check if file is selected
+            if (!selectedFile) {
+                showMessage(currentLang === 'ar' ? 'يرجى رفع وثيقة المقال' : 'Please upload article document', 'error');
+                isValid = false;
+            }
+
+            // Check if file type was properly detected
+            if (selectedFile && !selectedFileType) {
+                console.error("File selected but file type not detected!");
+                showMessage(currentLang === 'ar' ? 'خطأ في تحديد نوع الملف' : 'Error detecting file type', 'error');
+                isValid = false;
+            }
+
+            console.log("Form validation - selectedFile:", !!selectedFile, "selectedFileType:", selectedFileType);
+
+            return isValid;
+        }
+
+        // Show message function
+        function showMessage(message, type = 'success') {
+            const confirmationMsg = document.getElementById('confirmationMessage');
+            confirmationMsg.textContent = message;
+            confirmationMsg.className = `confirmation ${type}`;
+            confirmationMsg.style.display = 'block';
+            
+            // Auto hide after 5 seconds
+            setTimeout(() => {
+                confirmationMsg.style.display = 'none';
+            }, 5000);
+        }
+
+        // Show upload progress
+        function showUploadProgress() {
+            const progressContainer = document.getElementById('uploadProgress');
+            const progressFill = document.querySelector('.progress-fill');
+            const progressText = document.querySelector('.progress-text');
+            
+            progressContainer.style.display = 'block';
+            
+            // Simulate progress (since Firebase doesn't provide real progress for small files)
+            let progress = 0;
+            const progressInterval = setInterval(() => {
+                progress += Math.random() * 15;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(progressInterval);
+                }
+                
+                progressFill.style.width = progress + '%';
+                progressText.textContent = Math.round(progress) + '%';
+            }, 200);
+            
+            return progressInterval;
+        }
+
+        // Form submission handler
+        async function handleFormSubmission(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.querySelector('.submit-btn');
+            const confirmationMsg = document.getElementById('confirmationMessage');
+            
+            // Hide previous messages
+            confirmationMsg.style.display = 'none';
+
+            // Validate form
+            if (!validateForm()) {
+                showMessage(translations[currentLang].required, 'error');
+                return;
+            }
+
+            // Double-check file type detection before submission
+            if (selectedFile && selectedFileType) {
+                console.log("Pre-submission check - File:", selectedFile.name, "Type detected:", selectedFileType.file_type);
+            } else if (selectedFile && !selectedFileType) {
+                console.error("CRITICAL: File exists but no file type detected!");
+                showMessage(currentLang === 'ar' ? 'خطأ في نوع الملف' : 'File type detection error', 'error');
+                submitBtn.classList.remove('loading');
+                submitBtn.disabled = false;
+                return;
+            }
+
+            // Show loading state
+            submitBtn.classList.add('loading');
+            submitBtn.disabled = true;
+
+            try {
+                let documentUrl = null;
+                let progressInterval = null;
+
+                // Upload file if exists
+                if (selectedFile && selectedFileType) {
+                    progressInterval = showUploadProgress();
+                    console.log("Uploading file:", selectedFile.name, "Type:", selectedFileType.file_type);
+                    
+                    const fileName = `${document.getElementById('fullName').value.trim()}_${Date.now()}${selectedFileType.extension}`;
+                    const storageRef = ref(storage, `Articles/${fileName}`);
+                    const snapshot = await uploadBytes(storageRef, selectedFile);
+                    documentUrl = await getDownloadURL(snapshot.ref);
+                    
+                    console.log("Document URL:", documentUrl);
+                    
+                    // Clear progress
+                    if (progressInterval) clearInterval(progressInterval);
+                    document.getElementById('uploadProgress').style.display = 'none';
+                }
+                
+                // Create form data with file_type field
+                const formData = {
+                    fullName: document.getElementById('fullName').value.trim(),
+                    email: document.getElementById('email').value.trim(),
+                    education: document.getElementById('education').value,
+                    about: document.getElementById('about').value.trim(),
+                    status: "ملف مرسل",
+                    language: currentLang,
+                    timestamp: serverTimestamp(),
+                    documentUrl: documentUrl,
+                    // **NEW: Add file_type field as requested**
+                    file_type: selectedFileType ? selectedFileType.file_type : 'unknown',
+                    // Keep existing file type information for backward compatibility
+                    documentType: selectedFileType ? selectedFileType.extension : null,
+                    documentTypeName: selectedFileType ? selectedFileType.name : null,
+                    originalFileName: selectedFile ? selectedFile.name : null,
+                    fileSize: selectedFile ? selectedFile.size : null
+                };
+
+                console.log("Form data being saved to Firebase:");
+                console.log("- file_type:", formData.file_type);
+                console.log("- selectedFileType:", selectedFileType);
+                console.log("- Full formData:", formData);
+
+                // Add to Firestore
+                const docRef = await addDoc(collection(db, 'sent_documents'), formData);
+                console.log("✅ Document written successfully with ID:", docRef.id);
+                console.log("✅ Confirmed file_type saved:", formData.file_type);
+                
+                // Success handling
+                showMessage(translations[currentLang].success, 'success');
+                
+                // Reset form
+                document.getElementById('applicationForm').reset();
+                selectedFile = null;
+                selectedFileType = null;
+                document.getElementById('fileInfo').style.display = 'none';
+                document.getElementById('fileUploadArea').style.display = 'block';
+
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                const errorMessage = currentLang === 'ar' 
+                    ? `خطأ في التقديم: ${error.message}`
+                    : `Error submitting: ${error.message}`;
+                showMessage(errorMessage, 'error');
+            } finally {
+                // Reset button state
+                submitBtn.classList.remove('loading');
+                submitBtn.disabled = false;
+            }
+        }
+
+        // Input focus animations
+        function setupInputAnimations() {
+            const inputs = document.querySelectorAll('input, textarea, select');
+            
+            inputs.forEach(input => {
+                input.addEventListener('focus', () => {
+                    input.parentElement.classList.add('focused');
+                });
+                
+                input.addEventListener('blur', () => {
+                    if (!input.value) {
+                        input.parentElement.classList.remove('focused');
+                    }
+                });
+            });
+        }
+
+        // Smooth scrolling for form sections
+        function setupSmoothScrolling() {
+            const sectionTitles = document.querySelectorAll('.section-title');
+            
+            sectionTitles.forEach(title => {
+                title.addEventListener('click', () => {
+                    title.parentElement.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                });
+            });
+        }
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            initializePage();
+            setupFileUpload();
+            setupInputAnimations();
+            setupSmoothScrolling();
+            
+            // Event listeners
+            document.getElementById('langToggle').addEventListener('click', toggleLanguage);
+            document.getElementById('applicationForm').addEventListener('submit', handleFormSubmission);
+            
+            // Add some interactive effects
+            const submitBtn = document.querySelector('.submit-btn');
+            submitBtn.addEventListener('mouseenter', () => {
+                submitBtn.style.transform = 'translateY(-2px)';
+            });
+            
+            submitBtn.addEventListener('mouseleave', () => {
+                submitBtn.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
 </body>
 </html>
